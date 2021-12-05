@@ -28,6 +28,7 @@ jobs:
 
       - name: Containerize app
         run: |
+          chmod +x mvnw
           ./mvnw package
           docker build -t spring/demo-app .
 
