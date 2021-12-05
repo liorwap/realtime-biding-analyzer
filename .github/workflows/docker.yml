@@ -43,11 +43,9 @@ jobs:
 
       - name: run test on app
         run: |
-          docker run -p 8080:8080 spring/demo-app
-          && curl http://localhost:8080/UserStats?userId=0fdca2e7-c5e5-4873-8053-ac106f4c1fc2
-          && docker stop spring/demo-app
+          docker run -p 8080:8080 spring/demo-app && curl http://localhost:8080/UserStats?userId=0fdca2e7-c5e5-4873-8053-ac106f4c1fc2 && docker stop spring/demo-app
           echo done test
-          
+
       - name: log in to the container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
