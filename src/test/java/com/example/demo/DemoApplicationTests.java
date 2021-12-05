@@ -39,11 +39,11 @@ class DemoApplicationTests {
     }
     @Test
     void loadCheck() {
-        Set<String> allUsersIds = dataLoaderService.getRequestsArray()
-                .stream().map(Request::getUserId)
-                .collect(Collectors.toSet());
-        for(String userId : allUsersIds){
-            userStatsController.getUserStats(userId);
-        }
+//        Set<String> allUsersIds = dataLoaderService.getRequestsArray()
+//                .stream().map(Request::getUserId)
+//                .collect(Collectors.toSet());
+//        for(String userId : allUsersIds){
+//            userStatsController.getUserStats(userId);
+//        }
     }
 }
