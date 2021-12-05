@@ -37,3 +37,7 @@ jobs:
         run: docker build -t spring/demo-app .
       - name: run app
         run: docker run -p 8080:8080 spring/demo-app
+      - name: test app response
+        run: curl http://localhost:8080/UserStats?userId=0fdca2e7-c5e5-4873-8053-ac106f4c1fc2
+      - name: stop app
+        run: docker stop spring/demo-app
