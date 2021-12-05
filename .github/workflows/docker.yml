@@ -28,7 +28,7 @@ jobs:
 
       - name: Containerize app
         run: |
-          ./mvn package
+          ./mvnw package
           docker build -t spring/demo-app .
 
       - name: Run containarized app
