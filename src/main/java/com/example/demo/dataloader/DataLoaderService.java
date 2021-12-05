@@ -13,9 +13,9 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Slf4j
@@ -32,13 +32,9 @@ public class DataLoaderService {
         log.info("loading {} file", path);
         try {
             Resource resource = new ClassPathResource(path);
-
-            String requestsCsvPath = resource.getFile().getPath();
             log.info(resource.getFilename());
-            log.info(resource.getFile().getPath());
-            Reader reader = Files.newBufferedReader(Paths.get(requestsCsvPath));
-
-            CsvToBean<T> csvToBean = new CsvToBeanBuilder<T>(reader)
+            InputStream reader = resource.getInputStream();
+            CsvToBean<T> csvToBean = new CsvToBeanBuilder<T>(new InputStreamReader(reader, StandardCharsets.UTF_8))
                     .withType(classType)
                     .withIgnoreLeadingWhiteSpace(true)
                     .build();
